@@ -13,22 +13,27 @@ const Questions = () => {
 
     return (
         <div style={{ overflow:'hidden' }}>
-            <div className='scoreboard'>
-                <h2>{score} POINTS</h2>
-            </div>
-            <Swiper className='slider' slidesPerView={1} allowTouchMove={false} loop={false}>
-                {
-                    isLoading ? <h2>Questions Loading</h2> : (
-                    questionArray.length>0 && questionArray?.map((item, i) => {
-                        let options = [decode(item.correct_answer), ...item.incorrect_answers.sort(() => Math.random() - 0.5)];
-                        return (
-                            <SwiperSlide key={i}>
-                                <QuestionBox que={decode(item.question)} options={options} index={i+1} answer={decode(item.correct_answer)} />
-                            </SwiperSlide>
-                        )
-                    })
-                )}
-            </Swiper>
+            {
+                isLoading ? <h2>Loading....</h2>  : (
+                    <>
+                        <div className='scoreboard'>
+                            <h2>{score} POINTS</h2>
+                        </div>
+                        <Swiper className='slider' slidesPerView={1} allowTouchMove={false} loop={false}>
+                            {
+                                questionArray.length>0 && questionArray?.map((item, i) => {
+                                    let options = questionArray.length>0 && [decode(item.correct_answer), ...item.incorrect_answers];
+                                    return (
+                                        <SwiperSlide key={i}>
+                                            <QuestionBox que={decode(item?.question)} options={options.sort(() => Math.random() - 0.5)} index={i+1} answer={decode(item?.correct_answer)} />
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </Swiper>
+                    </>
+                )
+            }
         </div>
     )
 }

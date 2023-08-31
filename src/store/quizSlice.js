@@ -25,7 +25,7 @@ const quizSlice = createSlice({
             state.score = 0;
         },
         nextQuestion(state, action) {
-            state.activeIndex += 1;
+            state.activeIndex = state.activeIndex + 1;
         }
     }
 });

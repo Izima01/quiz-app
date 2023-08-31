@@ -41,10 +41,8 @@ const QuestionBox = ({ que, options, answer, index }) => {
     if (swiper.activeIndex === questionArray.length-1) {
       navigate('/finish');
     } else {
-      // setTimeout(() => {
-        swiper.slideNext();
-        dispatch(quizActions.nextQuestion());
-      // }, 2500);
+      swiper.slideNext();
+      dispatch(quizActions.nextQuestion());
       setAnswered(false);
     }
   }
