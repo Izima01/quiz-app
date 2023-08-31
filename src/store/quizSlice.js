@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { queArray } from '../Data';
 
 const quizSlice = createSlice({
     name: 'quiz',
     initialState: {
-        questionArray: [],
+        questionArray: queArray,
         score: 0,
     },
     reducers: {
@@ -11,13 +12,10 @@ const quizSlice = createSlice({
             state.questionArray = action.payload;
         },
         gradeQuestion(state, action) {
-            const answer = action.payload.answer;
-            const selected = action.payload.opt;
-            const timeLeft = action.payload.totalSeconds
+            const { answer, opt, totalSeconds } = action.payload;
             // eslint-disable-next-line eqeqeq
-            if (answer === selected) {
-                const addScore = 5 * timeLeft;
-                console.log(addScore);
+            if (answer === opt) {
+                const addScore = 5 * totalSeconds;
                 state.score += addScore;
             }
         },

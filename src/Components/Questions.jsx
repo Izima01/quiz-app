@@ -1,7 +1,6 @@
 import '../App.css';
 import { useSelector } from 'react-redux';
 import QuestionBox from './QuestionBox';
-import { queArray } from '../Data';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { decode } from 'html-entities';
@@ -9,7 +8,6 @@ import useQuestionFetcher from '../useQuestionFetcher';
 
 const Questions = () => {
     const { questionArray, score } = useSelector((state) => state.quiz);
-    // const dispatch = useDispatch();
     const { isLoading } = useQuestionFetcher();
 
     return (
@@ -22,7 +20,7 @@ const Questions = () => {
                     </div>
                     <Swiper className='slider' slidesPerView={1} allowTouchMove={false} loop={false}>
                         {
-                            (questionArray || queArray).map((item, i) => {
+                            questionArray.map((item, i) => {
                                 let options = [decode(item.correct_answer), ...item.incorrect_answers];
                                 options = options.sort(() => Math.random() - 0.5);
                                 return (

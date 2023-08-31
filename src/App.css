@@ -13,6 +13,7 @@ a, button {
   padding: 4px 20px;
   border-radius: 8px;
   /* margin-top: 24px; */
+  text-align: center;
   border: none;
   margin: 12px auto 0;
   width: 50%;
@@ -91,9 +92,9 @@ form {
 }
 
 .question {
-  flex: 0 0 100%;
-  transition: transform 0.3s ease-in-out;
-  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .options {
@@ -101,7 +102,7 @@ form {
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: wrap;
-  margin: 24px 0;
+  margin: 24px 0 18px;
   row-gap: 12px;
 }
 
@@ -124,15 +125,6 @@ button.correct {
   border: 2px solid green;
 }
 
-@media screen and (max-width: 480px) {
-  .input_group {
-    width: 100%;
-  }
-  .options button {
-    width: 100%;
-  }
-}
-
 .flex {
   display: flex;
   justify-content: space-between;
@@ -149,8 +141,9 @@ button.correct {
 
 .next {
   width: 50%;
-  transform: translateX(50%);
   margin: 24px auto 0;
+  padding: 8px 0;
+  background-color: green;
 }
 
 #questions h2 {
@@ -174,6 +167,20 @@ button.correct {
   animation: slideIn 600ms linear;
   /* transform: translateX(0%);
   transition: all 600ms ease-in; */
+}
+
+@media screen and (max-width: 480px) {
+  .input_group {
+    width: 100%;
+  }
+
+  .options button {
+    width: 100%;
+  }
+
+  .next {
+    width: 80%;
+  }
 }
 
 @keyframes slideIn {

@@ -8,6 +8,7 @@ import Questions from './Components/Questions';
 import ErrorPage from './Components/ErrorPage';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import Congrats from './Components/Congrats';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element:<Home /> },
       { path: '/questions', element: <Questions /> },
+      { path: '/finish', element: <Congrats /> },
     ]
   }
 ]);

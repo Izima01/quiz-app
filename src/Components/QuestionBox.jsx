@@ -4,7 +4,7 @@ import { quizActions } from '../store/quizSlice';
 import { useSwiper } from 'swiper/react';
 import { useTimer } from 'react-timer-hook';
 import { decode } from 'html-entities';
-
+import { Link } from 'react-router-dom';
 
 const QuestionBox = ({ que, options, answer, index }) => {
   const time = new Date();
@@ -46,7 +46,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
 
   return (
     <div className='question'>
-        <div className='flex' style={{ padding: '0 20px 10px' }}>
+        <div className='flex'>
           <h2>Question {index}</h2>
 
           {/* Timer component */}
@@ -54,7 +54,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
             <p
               style={{
                   fontWeight: 600,
-                  fontSize: '36px',
+                  fontSize: '32px',
                   color: (seconds < 10) ? 'red' : 'green',
                 }}
               >
@@ -74,7 +74,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
             })
           }
         </div>
-        {swiper.activeIndex === questionArray.length - 1 ? <button className='next' onClick={() => window.length.href="/"}>Next Question</button> : <></> }
+        {swiper.activeIndex === questionArray.length-1 ? <Link className='next button' to='/finish'>Finish Quiz</Link> : <></> }
     </div>
   )
 }

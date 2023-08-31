@@ -35,7 +35,7 @@ const Home = () => {
     return (
         <div>
             <h1>Trivia App</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='input_group'>
                     <label htmlFor='name'>Name</label>
                     <input type='text' id='name' value={state?.name} required onChange={(e) => handleChange(e)}  />
@@ -54,7 +54,6 @@ const Home = () => {
                 <div className='input_group'>
                     <label htmlFor='difficulty'>Difficulty Level</label>
                     <select value={state?.difficulty} required onChange={(e) => handleChange(e)} id='difficulty'>
-                        <option value='easy' disabled>Choose a difficulty level</option>
                         <option value='easy'>Easy</option>
                         <option value='medium'>Medium</option>
                         <option value='difficult'>difficult</option>
@@ -71,7 +70,6 @@ const Home = () => {
                 </div>
                 <button type='submit' onClick={handleSubmit}>Start the quiz</button>
             </form>
-            {/* <a href='#questions'>Next Page</a> */}
         </div>
     )
 }
