@@ -19,7 +19,7 @@ const Questions = () => {
             <Swiper className='slider' slidesPerView={1} allowTouchMove={false} loop={false}>
                 {
                     isLoading ? <h2>Questions Loading</h2> : (
-                    questionArray.map((item, i) => {
+                    questionArray.length>0 && questionArray?.map((item, i) => {
                         let options = [decode(item.correct_answer), ...item.incorrect_answers.sort(() => Math.random() - 0.5)];
                         return (
                             <SwiperSlide key={i}>
