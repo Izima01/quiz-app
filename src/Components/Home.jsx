@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import { categories } from '../Data';
+import { categories } from '../Assets/Data';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { userActions } from '../store/userSlice';
+import { useEffect } from 'react';
+import { quizActions } from '../store/quizSlice';
 
 const dets = {
     name: '',
-    age: 0,
-    category: '',
+    category: 0,
     difficulty: '',
-    limit: 0
+    limit: 5
 };
 
 const Home = () => {
@@ -25,12 +26,16 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (state.name && state.age && state.category) {
+        if (state.name && state.category) {
             dispatch(userActions.addUserDetails(state));
             navigate('/questions');
         }
-        // setStartRunning(true);
     }
+
+    useEffect(() => {
+      dispatch(quizActions.reset());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div>
@@ -42,21 +47,17 @@ const Home = () => {
                 </div>
 
                 <div className='input_group'>
-                    <label htmlFor='age'>Age</label>
-                    <input type='number' id='age' value={state?.age} required onChange={(e) => handleChange(e)} />
-                </div>
-
-                <div className='input_group'>
                     <label htmlFor='limit'>Number of questions</label>
                     <input type='number' id='limit' value={state?.limit} required onChange={(e) => handleChange(e)} />
                 </div>
 
-                <div className='input_group'>
+                <div className='input_group select'>
                     <label htmlFor='difficulty'>Difficulty Level</label>
                     <select value={state?.difficulty} required onChange={(e) => handleChange(e)} id='difficulty'>
+                        <option value='' disabled>Choose a difficulty</option>
                         <option value='easy'>Easy</option>
                         <option value='medium'>Medium</option>
-                        <option value='difficult'>difficult</option>
+                        <option value='hard'>Hard</option>
                     </select>
                 </div>
                 

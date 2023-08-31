@@ -30,7 +30,7 @@ a, button {
 
 .App > div {
   width: 45%;
-  background-color: rgb(111, 111, 253);
+  background-color: rgb(207, 207, 253);
   border-radius: 16px;
   padding: 18px 28px;
 }
@@ -52,7 +52,7 @@ form {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  row-gap: 20px;
+  row-gap: 16px;
 }
 
 .input_group {
@@ -68,7 +68,7 @@ form {
 
 .input_group input, select {
   width: 100%;
-  padding: 6px 16px;
+  padding: 4px 16px;
   font-size: 16px;
   border-radius: 4px;
   border: none;
@@ -80,7 +80,7 @@ form {
 }
 
 .input_group label {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: black;
 }
@@ -110,19 +110,22 @@ form {
   width: 48%;
   background-color: white;
   padding: 8px 12px;
-  border: 2px solid black;
   margin: 0;
   cursor: pointer;
 }
 
-button.wrong {
+.options button.wrong {
   background-color: rgb(255, 128, 100);
-  border: 2px solid red;
 }
 
-button.correct {
+.options button.selected {
+  border: 2px solid black;
+  color: aliceblue;
+  font-weight: 700;
+}
+
+.options button.correct {
   background-color: rgb(105, 255, 100);
-  border: 2px solid green;
 }
 
 .flex {
@@ -174,7 +177,7 @@ button.correct {
     width: 100%;
   }
 
-  .options button {
+  .options button, form button {
     width: 100%;
   }
 

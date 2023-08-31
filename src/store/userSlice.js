@@ -4,16 +4,14 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         name: '',
-        age: 0,
-        category: '',
+        category: 0,
         difficulty: '',
-        limit: 0
+        limit: 5
     },
     reducers: {
         addUserDetails(state, action) {
             const newUser = action.payload;
             state.name = newUser.name;
-            state.age = newUser.age;
             state.category = newUser.category;
             state.difficulty = newUser.difficulty;
             state.limit = newUser.limit;
