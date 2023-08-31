@@ -124,6 +124,15 @@ button.correct {
   border: 2px solid green;
 }
 
+@media screen and (max-width: 480px) {
+  .input_group {
+    width: 100%;
+  }
+  .options button {
+    width: 100%;
+  }
+}
+
 .flex {
   display: flex;
   justify-content: space-between;
