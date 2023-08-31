@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import useQuestionFetcher from './useQuestionFetcher';
+
+const details = {
+  name: '',
+  age: 0,
+  category: '',
+  difficulty: '',
+  limit: 0
+};
 
 function App() {
+  // const [user, setUser] = useState(details);
+  // const { data, isLoading } = useQuestionFetcher(user?.category, user?.limit, user?.difficulty);
+  const [startRunning, setStartRunning] = useState(false);
+
   return (
+    // <RouterProvider />
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Home user={user} setUser={setUser} setStartRunning={setStartRunning} />
+      <Questions startRunning={startRunning} setstartRunning={setStartRunning} data={data} /> */}
     </div>
   );
 }
