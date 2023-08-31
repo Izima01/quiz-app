@@ -41,6 +41,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
     setAnswered(false);
     restart(time);
     // }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swiper.activeIndex]);
 
   return (

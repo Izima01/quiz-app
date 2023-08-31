@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { categories } from '../Data';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { userActions } from '../store/userSlice';
 
@@ -15,7 +15,6 @@ const dets = {
 
 const Home = () => {
     const [state, setState] = useState(dets);
-    const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
