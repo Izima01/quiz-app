@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { quizActions } from '../store/quizSlice';
 import { useSwiper } from 'swiper/react';
 import { useTimer } from 'react-timer-hook';
@@ -11,9 +11,9 @@ const QuestionBox = ({ que, options, answer, index }) => {
   time.setSeconds(time.getSeconds() + 20);
 
   const dispatch = useDispatch();
+  const { questionArray } = useSelector((state) => state.quiz);
   const [answered, setAnswered] = useState(false);
   const [selected, setSelected] = useState('');
-  // options.map(opt => answerArray.push(Object.keys(opt)));
   const swiper = useSwiper();
 
   // Timer logic
@@ -38,12 +38,9 @@ const QuestionBox = ({ que, options, answer, index }) => {
   };
 
   useEffect(() => {
-    if (swiper.activeIndex === 9 && answered) {
-      alert("you're done now");
-    } else {
-      setAnswered(false);
-      restart(time);
-    }
+    setAnswered(false);
+    restart(time);
+    // }
   }, [swiper.activeIndex]);
 
   return (
@@ -76,7 +73,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
             })
           }
         </div>
-        {/* <button className='next' onClick={() => swiper.slideNext()}>Next Question</button> */}
+        {swiper.activeIndex === questionArray.length - 1 ? <button className='next' onClick={() => window.length.href="/"}>Next Question</button> : <></> }
     </div>
   )
 }

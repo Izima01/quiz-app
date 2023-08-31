@@ -22,7 +22,7 @@ const Questions = () => {
                     </div>
                     <Swiper className='slider' slidesPerView={1} allowTouchMove={false} loop={false}>
                         {
-                            queArray.map((item, i) => {
+                            (questionArray || queArray).map((item, i) => {
                                 let options = [decode(item.correct_answer), ...item.incorrect_answers];
                                 options = options.sort(() => Math.random() - 0.5);
                                 return (
