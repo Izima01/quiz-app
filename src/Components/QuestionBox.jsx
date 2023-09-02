@@ -96,12 +96,12 @@ const QuestionBox = ({ que, options, answer, index }) => {
           {
             options.map((opt, i) => {
                 return (
-                  <button disabled={answered} className={(opt === answer && answered) ? 'correct' : (answered && opt !== answer) ? 'wrong' : opt === selected ? 'selected' : ''} key={i} value={i} onClick={() => selectOption(opt)}>{decode(opt)}</button>
+                  <button disabled={answered} className={(opt === selected) ? 'selected' : (opt === answer && answered) ? 'correct' : (answered && opt !== answer) ? 'wrong' : ''} key={i} value={i} onClick={() => selectOption(opt)}>{decode(opt)}</button>
                 )
             })
           }
         </div>
-        <button className='next button' onClick={nextQuestion}>{swiper.activeIndex === 9 ? 'Finish Quiz' : 'Next Question'}</button>
+        <button className='next button' onClick={nextQuestion}>{swiper.activeIndex === questionArray.length-1 ? 'Finish Quiz' : 'Next Question'}</button>
     </div>
   )
 }
