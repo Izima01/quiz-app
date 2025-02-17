@@ -122,6 +122,10 @@ form {
   border: 2px solid black !important;
   font-weight: 700;
 }
+.options button:disabled {
+  opacity: 75%;
+  background-color: inherit;
+}
 
 .options button.correct {
   background-color: rgb(105, 255, 100);
