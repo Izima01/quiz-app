@@ -6,9 +6,6 @@ import { useSwiper } from 'swiper/react';
 import { useTimer } from 'react-timer-hook';
 import { decode } from 'html-entities';
 import { useNavigate } from 'react-router-dom';
-// import { queArray } from '../Assets/Data';
-import wrong from '../Assets/wrong-answer.mp3';
-import correct from '../Assets/correct-answer.wav';
 
 const QuestionBox = ({ que, options, answer, index }) => {
   const time = new Date();
