@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { quizActions } from '../store/quizSlice';
 import { useSwiper } from 'swiper/react';
@@ -13,9 +13,6 @@ import correct from '../Assets/correct-answer.wav';
 const QuestionBox = ({ que, options, answer, index }) => {
   const time = new Date();
   time.setSeconds(time.getSeconds() + 15);
-
-  const wrongRef = useRef(null);
-  const correctRef = useRef(null);
 
   const dispatch = useDispatch();
   const { questionArray, activeIndex } = useSelector((state) => state.quiz);
@@ -31,9 +28,7 @@ const QuestionBox = ({ que, options, answer, index }) => {
     onExpire: () => {
       setAnswered(true);
       dispatch(quizActions.gradeQuestion({ answer, opt: selected, totalSeconds }));
-      if (!selected) {
-        wrongRef.current.play();
-      }
+      
     }
   });
 
@@ -54,24 +49,13 @@ const QuestionBox = ({ que, options, answer, index }) => {
   };
 
   useEffect(() => {
-    if (selected === answer) {
-      correctRef.current.play();
-    } else if (selected && selected!== answer) {
-      wrongRef.current.play();
-    }
-  }, [selected]);
-
-  useEffect(() => {
-    console.log(answered);
+    // console.log(answered);
     restart(time, true);
     setAnswered(false);
   }, [swiper.activeIndex, activeIndex]);
 
   return (
     <div className='question'>
-
-      <audio src={correct} ref={correctRef}></audio>
-      <audio src={wrong} ref={wrongRef}></audio>
 
       <div className='flex'>
         <h2>Question {index}</h2>
